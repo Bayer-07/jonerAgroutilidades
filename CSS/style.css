@@ -445,7 +445,7 @@ main {
 .product-card:nth-child(3) .product-btn:hover,
 .product-card:nth-child(6) .product-btn:hover,
 .product-card:nth-child(8) .product-btn:hover {
-    background-color: var(--green-hover);
+    background-color: var(--secondary-green-hover);
     transform: translateY(-2px);
 }
 
@@ -454,7 +454,7 @@ main {
 .product-card:nth-child(4) .product-content,
 .product-card:nth-child(5) .product-content,
 .product-card:nth-child(7) .product-content {
-    background: linear-gradient(135deg, var(--primary-green) 0%, var(--green-hover) 100%);
+    background: linear-gradient(135deg, var(--primary-green) 0%, var(--secondary-green-hover) 100%);
 }
 
 .product-card:nth-child(2) .product-btn,
