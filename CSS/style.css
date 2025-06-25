@@ -1417,71 +1417,184 @@ main {
     margin: 0;
 }
 
-/* Responsividade para Página de Produtos */
+/* ========================================
+   SEÇÃO MVV (MISSÃO, VISÃO, VALORES)
+   ======================================== */
+
+.mvv-section {
+    padding: 80px 20px;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    position: relative;
+}
+
+.mvv-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.mvv-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.mvv-card {
+    background: white;
+    border-radius: 15px;
+    padding: 40px 30px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.mvv-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    transition: all 0.3s ease;
+}
+
+.mvv-card.missao::before {
+    background: linear-gradient(90deg, #FF6B6B, #FF8E8E);
+}
+
+.mvv-card.visao::before {
+    background: linear-gradient(90deg, #4ECDC4, #44A08D);
+}
+
+.mvv-card.valores::before {
+    background: linear-gradient(90deg, #45B7D1, #5A9FD4);
+}
+
+.mvv-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.mvv-card:hover::before {
+    height: 100%;
+    opacity: 0.05;
+}
+
+.mvv-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.mvv-card.missao .mvv-icon {
+    background: linear-gradient(135deg, #FF6B6B, #FF8E8E);
+    color: white;
+}
+
+.mvv-card.visao .mvv-icon {
+    background: linear-gradient(135deg, #4ECDC4, #44A08D);
+    color: white;
+}
+
+.mvv-card.valores .mvv-icon {
+    background: linear-gradient(135deg, #45B7D1, #5A9FD4);
+    color: white;
+}
+
+.mvv-icon svg {
+    width: 40px;
+    height: 40px;
+}
+
+.mvv-card:hover .mvv-icon {
+    transform: scale(1.1);
+}
+
+.mvv-card h3 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #2c3e50;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+}
+
+.mvv-card p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #666;
+    margin: 0;
+}
+
+/* Responsividade para MVV */
 @media (max-width: 768px) {
-    .products-page-section {
-        padding: 1rem 0 3rem;
+    .mvv-section {
+        padding: 60px 15px;
     }
-
-    .products-page-container {
-        padding: 0 1rem;
+    
+    .mvv-cards {
+        grid-template-columns: 1fr;
+        gap: 25px;
     }
-
-    .products-page-title {
-        font-size: 2rem;
-        margin-bottom: 2rem;
+    
+    .mvv-card {
+        padding: 30px 20px;
     }
-
-    .category-title {
+    
+    .mvv-icon {
+        width: 70px;
+        height: 70px;
+        margin-bottom: 25px;
+    }
+    
+    .mvv-icon svg {
+        width: 35px;
+        height: 35px;
+    }
+    
+    .mvv-card h3 {
         font-size: 1.5rem;
-        margin-bottom: 1.5rem;
+        margin-bottom: 15px;
     }
-
-    .category-section {
-        margin-bottom: 3rem;
-    }
-
-    .products-grid {
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 1.5rem;
-    }
-
-    .product-image {
-        height: 180px;
-    }
-
-    .product-content {
-        padding: 1.2rem;
-    }
-
-    .product-content h3 {
-        font-size: 1.1rem;
-    }
-
-    .product-content p {
-        font-size: 0.9rem;
+    
+    .mvv-card p {
+        font-size: 0.95rem;
     }
 }
 
 @media (max-width: 480px) {
-    .products-page-title {
-        font-size: 1.8rem;
+    .mvv-section {
+        padding: 50px 10px;
     }
-
-    .category-title {
+    
+    .mvv-card {
+        padding: 25px 15px;
+    }
+    
+    .mvv-icon {
+        width: 60px;
+        height: 60px;
+        margin-bottom: 20px;
+    }
+    
+    .mvv-icon svg {
+        width: 30px;
+        height: 30px;
+    }
+    
+    .mvv-card h3 {
         font-size: 1.3rem;
+        margin-bottom: 12px;
     }
-
-    .products-grid {
-        grid-template-columns: 1fr;
-        gap: 1.2rem;
-    }
-
-    .product-image {
-        height: 160px;
-    }
-
-    .product-content {
-        padding: 1rem;
+    
+    .mvv-card p {
+        font-size: 0.9rem;
+        line-height: 1.5;
     }
 }
