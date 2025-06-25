@@ -34,4 +34,47 @@ document.addEventListener('DOMContentLoaded', function() {
             closeMobileMenu();
         }
     });
+
+    // Função para scroll suave em links internos
+    function smoothScroll() {
+        // Seleciona todos os links que começam com #
+        const internalLinks = document.querySelectorAll('a[href^="#"]');
+        
+        internalLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                // Pega o href do link
+                const targetId = this.getAttribute('href');
+                
+                // Se for apenas # (link para o topo), não faz nada especial
+                if (targetId === '#') {
+                    e.preventDefault();
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
+                    return;
+                }
+                
+                // Procura o elemento de destino
+                const targetElement = document.querySelector(targetId);
+                
+                // Se o elemento existe, faz scroll suave
+                if (targetElement) {
+                    e.preventDefault();
+                    
+                    // Calcula a posição considerando altura do header fixo (se houver)
+                    const headerHeight = document.querySelector('.navbar')?.offsetHeight || 0;
+                    const targetPosition = targetElement.offsetTop - headerHeight - 20; // 20px de margem extra
+                    
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    }
+    
+    // Inicializa o scroll suave
+    smoothScroll();
 });
