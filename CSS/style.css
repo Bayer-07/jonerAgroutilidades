@@ -431,7 +431,7 @@ main {
 .products-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 2rem;  
+    gap: 2rem;
     justify-items: center;
 }
 
@@ -545,15 +545,37 @@ main {
     transition: all 0.3s ease;    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Cores padronizadas para todos os produtos - alternando azul e verde */
-.product-item:nth-child(odd) .product-content {
-    background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%);
-    color: var(--white-lighter);
+/* Cores específicas para diferentes categorias */
+.product-card.pet-shop .product-content {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #3A4B7C 100%);
 }
 
-.product-item:nth-child(even) .product-content {
-    background: linear-gradient(135deg, var(--primary-green) 0%, var(--secondary-green-hover) 100%);
-    color: var(--white-lighter);
+.product-card.sementes .product-content {
+    background: linear-gradient(135deg, var(--primary-green) 0%, #7FA832 100%);
+}
+
+.product-card.ferramentas .product-content {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2A3A6B 100%);
+}
+
+.product-card.jardinagem .product-content {
+    background: linear-gradient(135deg, var(--primary-green) 0%, #8FB635 100%);
+}
+
+.product-card.aves-domesticas .product-content {
+    background: linear-gradient(135deg, var(--primary-green) 0%, #7FA832 100%);
+}
+
+.product-card.aves-criacao .product-content {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #3A4B7C 100%);
+}
+
+.product-card.criacao-pecuaria .product-content {
+    background: linear-gradient(135deg, var(--primary-green) 0%, #8FB635 100%);
+}
+
+.product-card.veterinarios .product-content {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2A3A6B 100%);
 }
 
 /* Seção Sobre Nossa Loja */
@@ -1177,14 +1199,10 @@ main {
 
     /* Produtos responsivo */
     .products-title {
-        font-size: 2rem;    }    .products-grid {
+        font-size: 2rem;
+    }    .products-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 1.5rem;
-    }
-    
-    .home-products-grid,
-    .products-section .products-grid {
-        grid-template-columns: repeat(2, 1fr);
     }
 
     .product-card {
@@ -1199,7 +1217,103 @@ main {
         align-items: center;
     }
 
-    .hero-content {
+    .about-text {
+        padding: 2rem;
+    }
+
+    .about-image img {
+        max-width: 100%;
+        height: auto;
+    }    /* Localização e Contato responsivo */
+    .location-contact-container {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+
+    .section-title {
+        font-size: 1.8rem;
+    }
+
+    .map-container {
+        height: 300px;
+    }
+
+    .address-info p {
+        font-size: 1rem;
+    }
+
+    .social-media {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1rem;
+    }    .social-item {
+        width: 100%;
+        max-width: 300px;
+        margin: 0 auto;
+        padding: 1rem 1.2rem;
+    }
+
+    .social-icon {
+        width: 40px;
+        height: 40px;
+    }
+
+    .social-icon svg {
+        width: 24px;
+        height: 24px;
+    }    .social-item span {
+        font-size: 1rem;
+    }
+
+    /* Fornecedores responsivo */
+    .suppliers-title {
+        font-size: 2rem;
+    }
+
+    .suppliers-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+        padding: 2.5rem 2rem;
+    }
+
+    .supplier-item:not(:nth-child(3n))::after {
+        display: block;
+    }
+
+    .supplier-item:nth-child(3n)::after {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .nav-logo img {
+        height: 40px;
+    }
+
+    .nav-container {
+        height: 60px;
+    }
+
+    .hero-section {
+        margin-top: 60px;
+    }
+
+    main {
+        margin-top: 60px;
+    }
+
+    .content {
+        padding: 1rem;
+    }    .content h1 {
+        font-size: 1.8rem;
+    }    /* Hero mobile pequeno */
+    .hero-content h1,
+    .hero-content h2 {
+        font-size: 1.5rem;
+    }
+
+    .hero-container {
         padding: 0 1rem;
     }    .hero-image img {
         height: 200px;
@@ -1324,7 +1438,7 @@ main {
 /* Página de Produtos */
 .products-page-section {
     padding: 2rem 0 4rem;
-    background: var(--white-lighter);
+    background: var(--bg-light);
     min-height: 100vh;
     margin-top: 70px;
 }
@@ -1362,18 +1476,9 @@ main {
 
 .products-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 2rem;
     margin-top: 2rem;
-}
-
-/* Configuração específica para a grid de produtos da home */
-.home-products-grid,
-.products-section .products-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 2rem;  
-    justify-items: center;
 }
 
 .product-item {
@@ -1384,9 +1489,6 @@ main {
     transition: all 0.3s ease;
     cursor: pointer;
     border: 2px solid transparent;
-    width: 100%; /* Garantir que todos os cards tenham a mesma largura */
-    max-width: 100%; /* Limitar a largura máxima */
-    margin: 0 auto; /* Centralizar os cards */
 }
 
 .product-item:hover {
@@ -1433,205 +1535,71 @@ main {
     margin: 0;
 }
 
-/* ========================================
-   SEÇÃO MVV (MISSÃO, VISÃO, VALORES)
-   ======================================== */
-
-.mvv-section {
-    padding: 80px 20px;
-    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-    position: relative;
-}
-
-.mvv-container {
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.mvv-cards {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
-    margin-top: 40px;
-}
-
-.mvv-card {
-    background: white;
-    border-radius: 15px;
-    padding: 40px 30px;
-    text-align: center;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
-}
-
-.mvv-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 4px;
-    transition: all 0.3s ease;
-}
-
-.mvv-card.missao::before {
-    background: linear-gradient(90deg, #FF6B6B, #FF8E8E);
-}
-
-.mvv-card.visao::before {
-    background: linear-gradient(90deg, #4ECDC4, #44A08D);
-}
-
-.mvv-card.valores::before {
-    background: linear-gradient(90deg, #45B7D1, #5A9FD4);
-}
-
-.mvv-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-}
-
-.mvv-card:hover::before {
-    height: 100%;
-    opacity: 0.05;
-}
-
-.mvv-icon {
-    width: 80px;
-    height: 80px;
-    margin: 0 auto 30px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    transition: all 0.3s ease;
-}
-
-.mvv-card.missao .mvv-icon {
-    background: linear-gradient(135deg, #FF6B6B, #FF8E8E);
-    color: white;
-}
-
-.mvv-card.visao .mvv-icon {
-    background: linear-gradient(135deg, #4ECDC4, #44A08D);
-    color: white;
-}
-
-.mvv-card.valores .mvv-icon {
-    background: linear-gradient(135deg, #45B7D1, #5A9FD4);
-    color: white;
-}
-
-.mvv-icon svg {
-    width: 40px;
-    height: 40px;
-}
-
-.mvv-card:hover .mvv-icon {
-    transform: scale(1.1);
-}
-
-.mvv-card h3 {
-    font-size: 1.8rem;
-    font-weight: 700;
-    color: #2c3e50;
-    margin-bottom: 20px;
-    letter-spacing: 1px;
-}
-
-.mvv-card p {
-    font-size: 1rem;
-    line-height: 1.6;
-    color: #666;
-    margin: 0;
-}
-
-/* Estilo do botão "Comprar Agora" */
-.buy-now-btn {
-    display: block;
-    width: 80%; /* Largura fixa para todos os botões */
-    margin: 12px auto 0; /* Centralizado com margem superior */
-    background-color: #248F28; /* Cor do WhatsApp */
-    color: white;
-    text-decoration: none;
-    padding: 0.6rem 1.2rem;
-    border-radius: 25px;
-    font-family: 'Century Gothic', 'Trebuchet MS', sans-serif;
-    font-weight: bold;
-    font-size: 0.85rem;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    transition: all 0.3s ease;
-    box-shadow: 0 2px 8px rgba(37, 211, 102, 0.3);
-    position: relative;
-    text-align: center;
-}
-
-.buy-now-btn:hover {
-    background-color: #128C7E; /* Cor mais escura do WhatsApp ao passar o mouse */
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4);
-}
-
-.buy-now-btn:active {
-    transform: translateY(0);
-    box-shadow: 0 2px 5px rgba(37, 211, 102, 0.3);
-}
-
-.buy-now-btn::before {
-    content: '';
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='16' height='16' fill='white'%3E%3Cpath d='M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347'/%3E%3C/svg%3E");
-    width: 16px;
-    height: 16px;
-    display: inline-block;
-    background-repeat: no-repeat;
-    margin-right: 5px;
-    vertical-align: middle;
-    position: relative;
-    top: -1px;
-}
-
-/* Responsividade para o botão */
+/* Responsividade para Página de Produtos */
 @media (max-width: 768px) {
-    .buy-now-btn {
-        padding: 0.5rem 1rem;
-        font-size: 0.8rem;
+    .products-page-section {
+        padding: 1rem 0 3rem;
+    }
+
+    .products-page-container {
+        padding: 0 1rem;
+    }
+
+    .products-page-title {
+        font-size: 2rem;
+        margin-bottom: 2rem;
+    }
+
+    .category-title {
+        font-size: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .category-section {
+        margin-bottom: 3rem;
+    }
+
+    .products-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1.5rem;
+    }
+
+    .product-image {
+        height: 180px;
+    }
+
+    .product-content {
+        padding: 1.2rem;
+    }
+
+    .product-content h3 {
+        font-size: 1.1rem;
+    }
+
+    .product-content p {
+        font-size: 0.9rem;
     }
 }
 
 @media (max-width: 480px) {
-    .buy-now-btn {
-        padding: 0.45rem 0.9rem;
-        font-size: 0.75rem;
-        display: block;
-        text-align: center;
-        margin-top: 10px;
+    .products-page-title {
+        font-size: 1.8rem;
     }
-}
 
-/* Responsividade para a grid de produtos */
-@media (max-width: 992px) {
-    .products-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1.8rem;
+    .category-title {
+        font-size: 1.3rem;
     }
-    
-    .home-products-grid,
-    .products-section .products-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
 
-@media (max-width: 576px) {
     .products-grid {
         grid-template-columns: 1fr;
-        gap: 1.5rem;
+        gap: 1.2rem;
     }
-    
-    .home-products-grid,
-    .products-section .products-grid {
-        grid-template-columns: 1fr;
+
+    .product-image {
+        height: 160px;
+    }
+
+    .product-content {
+        padding: 1rem;
     }
 }
