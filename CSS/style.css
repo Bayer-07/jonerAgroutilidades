@@ -1177,10 +1177,14 @@ main {
 
     /* Produtos responsivo */
     .products-title {
-        font-size: 2rem;
-    }    .products-grid {
+        font-size: 2rem;    }    .products-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 1.5rem;
+    }
+    
+    .home-products-grid,
+    .products-section .products-grid {
+        grid-template-columns: repeat(2, 1fr);
     }
 
     .product-card {
@@ -1358,9 +1362,18 @@ main {
 
 .products-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(3, 1fr);
     gap: 2rem;
     margin-top: 2rem;
+}
+
+/* Configuração específica para a grid de produtos da home */
+.home-products-grid,
+.products-section .products-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;  
+    justify-items: center;
 }
 
 .product-item {
@@ -1371,6 +1384,9 @@ main {
     transition: all 0.3s ease;
     cursor: pointer;
     border: 2px solid transparent;
+    width: 100%; /* Garantir que todos os cards tenham a mesma largura */
+    max-width: 100%; /* Limitar a largura máxima */
+    margin: 0 auto; /* Centralizar os cards */
 }
 
 .product-item:hover {
@@ -1534,8 +1550,10 @@ main {
 
 /* Estilo do botão "Comprar Agora" */
 .buy-now-btn {
-    display: inline-block;
-    background-color: #25D366; /* Cor do WhatsApp */
+    display: block;
+    width: 80%; /* Largura fixa para todos os botões */
+    margin: 12px auto 0; /* Centralizado com margem superior */
+    background-color: #248F28; /* Cor do WhatsApp */
     color: white;
     text-decoration: none;
     padding: 0.6rem 1.2rem;
@@ -1547,8 +1565,8 @@ main {
     letter-spacing: 0.5px;
     transition: all 0.3s ease;
     box-shadow: 0 2px 8px rgba(37, 211, 102, 0.3);
-    margin-top: 12px;
     position: relative;
+    text-align: center;
 }
 
 .buy-now-btn:hover {
@@ -1590,5 +1608,30 @@ main {
         display: block;
         text-align: center;
         margin-top: 10px;
+    }
+}
+
+/* Responsividade para a grid de produtos */
+@media (max-width: 992px) {
+    .products-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.8rem;
+    }
+    
+    .home-products-grid,
+    .products-section .products-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 576px) {
+    .products-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .home-products-grid,
+    .products-section .products-grid {
+        grid-template-columns: 1fr;
     }
 }
