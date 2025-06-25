@@ -4,6 +4,34 @@ document.addEventListener('DOMContentLoaded', function() {
     const navMenu = document.querySelector('.nav-menu');
     const navOverlay = document.getElementById('nav-overlay');
 
+    // Adicionar botão "Comprar Agora" em todos os cards de produtos
+    function addBuyNowButtons() {
+        const productContents = document.querySelectorAll('.product-content');
+        
+        productContents.forEach(content => {
+            // Verificar se já tem o botão para evitar duplicação
+            if (!content.querySelector('.buy-now-btn')) {
+                // Pegar o título do produto para personalizar a mensagem
+                const productTitle = content.querySelector('h3')?.textContent || 'produtos';
+                
+                // Criar o link do WhatsApp
+                const whatsappLink = document.createElement('a');
+                whatsappLink.href = `https://wa.me/5545998021630?text=Olá!%20Tenho%20interesse%20em%20${encodeURIComponent(productTitle)}%20da%20sua%20loja.`;
+                whatsappLink.className = 'buy-now-btn';
+                whatsappLink.textContent = 'Comprar Agora';
+                whatsappLink.target = '_blank';
+                
+                // Adicionar o botão ao final do content
+                content.appendChild(whatsappLink);
+            }
+        });
+    }
+    
+    // Executar a função para adicionar os botões
+    if (window.location.pathname.includes('produtos.html')) {
+        addBuyNowButtons();
+    }
+    
     function toggleMobileMenu() {
         mobileMenu.classList.toggle('active');
         navMenu.classList.toggle('active');
